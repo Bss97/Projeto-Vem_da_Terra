@@ -4,9 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "produto")
@@ -15,25 +18,37 @@ public class Produto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	@NotNull
+	private Long id;
+
+	@NotNull(message = "Campo Não pode ser Nulo")
 	@Size(min = 2, max = 30)
 	private String nome;
-	@NotNull
+
+	@NotNull(message = "Campo Não pode ser Nulo")
 	@Size(min = 10, max = 200)
 	private String descricao;
-	@NotNull
-	private double preco;
-	@NotNull
-	private int codigo;
-	@NotNull
-	private String URL;
 
-	public long getId() {
+	@NotNull(message = "Campo Não pode ser Nulo")
+	private double preco;
+
+	@NotNull(message = "Campo Não pode ser Nulo")
+	private int codigo;
+
+	private String url;
+
+	@ManyToOne
+	@JsonIgnoreProperties({ "produto" })
+	private Categoria categoria;
+
+	@ManyToOne
+	@JsonIgnoreProperties({ "produto" })
+	private Usuario usuario;
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -69,12 +84,28 @@ public class Produto {
 		this.codigo = codigo;
 	}
 
-	public String getURL() {
-		return URL;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setURL(String uRL) {
-		URL = uRL;
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }
