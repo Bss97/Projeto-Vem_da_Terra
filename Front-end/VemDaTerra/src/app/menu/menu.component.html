@@ -1,37 +1,92 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-    
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" routerLink='/inicio' aria-current="page" href="#">Início</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" routerLink='/sobre' aria-current="page" href="#">Sobre Nós</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" routerLink='/contato' href="#">Contato</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Conheça nossos produtos
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Organicos</a></li>
-                        <li><a class="dropdown-item" href="#">Perfumes</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">que isso?</a></li>
-                    </ul>
-                </li>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff; ">
 
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Pesquisar</button>
-            </form>
-        </div>
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-bold" routerLink='/inicio' aria-current="page" href="#">Início</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-bold" routerLink='/sobre' aria-current="page" href="#">Sobre Nós</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-bold" routerLink='/contato' href="#">Contato</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-bold" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Nossos produtos
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink='/produto' >Alimentos</a></li>
+            <li><a class="dropdown-item" routerLink='/produto' >Cosméticos</a></li>
+            <li><a class="dropdown-item" routerLink='/produto' >Higiene</a></li>
+            <li><a class="dropdown-item" routerLink='/produto' >vestuário</a></li>
+            <li><a class="dropdown-item" routerLink='/produto' >Papelaria</a></li>
+            <li><a class="dropdown-item" routerLink='/produto' >Mobilia</a></li>
+
+            <li><hr class="dropdown-divider"></li>
+            
+            <li><a class="dropdown-item" routerLink='/cadastro/categoria' >Cadastrar  categoria</a></li>
+            <li><a class="dropdown-item" routerLink='/cadastro/produto' >Cadastrar produto</a></li>
+            
+            
+
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text" data-bs-toggle="modal" data-bs-target="#login" href="#">Entrar</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text" (click)='sair()' href="#">Sair</a>
+        </li>
+
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-dark" type="submit">Pesquisar</button>
+      </form>
     </div>
+  </div>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content br-50 wh">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado" class='justify-content-center'>Faça login</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+          <div class="modal-body">
+            <div class="form-group my-2">
+              <label for="email">Endereço de email</label>
+              <input [(ngModel)]="userLogin.email" type="email" class="form-control" id="email" aria-describedby="email"
+                placeholder="Digite seu email">
+            </div>
+            <div class="form-group my-2 ">
+              <label for="senha">Senha</label>
+              <input [(ngModel)]="userLogin.senha" type="password" class="form-control" id="senha"
+                placeholder="Digite uma Senha">
+            </div>
+
+          </div>
+          <div class="modal-footer d-flex justify-content-center my-2">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" routerLink='/inicio'>Cancelar</button>
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)='login()'>Entrar</button>
+          </div>
+          
+          <p class="text-center">Não tem uma conta? <a routerLink='/cadastro' data-bs-dismiss="modal">Cadastre-se</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center">
+
+    <div class="col-md-4 mt-3 mb-5">
+
+      <h1 class="text-center">Inscreva-se</h1>
+
+      <div class="form-group py-2">
+        <label for="nome">Nome</label>
+        <input [(ngModel)]='user.nome' class="form-control" type="text" name="nome" id="nome" placeholder="Seu nome">
+      </div>
+
+      <div class="form-group py-2">
+        <label for="email">Email</label>
+        <input [(ngModel)]='user.email' class="form-control" type="text" name="email" id="email"
+          placeholder="Sua email">
+      </div>
+
+      <div class="form-group py-2">
+        <label for="senha">Senha</label>
+        <input (input)='confirmaSenha($event)' class="form-control" type="password" name="senha" id="senha"
+          placeholder="Digite Sua senha">
+      </div>
+
+      <div class="form-group py-2">
+        <label for="confirmaSenha">Confirmar Senha</label>
+        <input [(ngModel)]='user.senha' class="form-control" type="password" name="confirmaSenha" id="confirmaSenha"
+          placeholder="Confirme sua senha">
+      </div>
+
+      <div class="form-group py-2">
+        <label for="tipo">Tipo de Usuário</label>
+        <select class="form-control" name="tipoUser" id="tipoUser" (change)='tipoUser($event)'>
+          <option>Selecione um tipo de usuário: </option>
+          <option value="CLIENTE">CLIENTE</option>
+          <option value="VENDEDOR">VENDEDOR</option>
+        </select>
+      </div>
+
+      <div class="d-flex justify-content-center p-3">
+        <button type="submit" class="btn btn-danger m-lg-1" routerLink='/login'>Cancelar</button>
+        <button type="submit" class="btn btn-success m-lg-1" (click)='cadastrarUser()'>Cadastrar</button>
+
+      </div>
+    </div>
+
+  </div>

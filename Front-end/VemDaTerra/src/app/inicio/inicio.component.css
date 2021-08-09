@@ -1,0 +1,30 @@
+.fs10{
+    font-size: 19px;
+}
+
+.fundo1{
+    background-color: #c5f9ec;
+}
+
+.fundo2{
+    background-color: #d8efdd;
+}
+
+.centro{
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.ct{
+    text-align: center;
+}
+
+.imgcard{
+    height: 200px;
+    width: 320px;
+}
+
+.preco{
+    color: #019e43;
+}
